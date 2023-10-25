@@ -22,7 +22,7 @@ function HomePage() {
         href="#"
         className="bg-crimson rounded-full p-5"
       >
-        Let's Get Started
+        Lets Get Started
       </a>
       <p className="mt-4 text-sm text-mindaro">
         Powered by React and Tailwind CSS
