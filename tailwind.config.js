@@ -9,6 +9,14 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    colors: {
+      crimson: '#d7263d',
+      giantOrange: '#F46036',
+      spaceCadet: '#2e294e',
+      persianGreen: '#1B998B',
+      mindaro: '#C5D86D',
+      whiteTest: '#FFFFFF',
+    },
     extend: {},
   },
   plugins: [],
