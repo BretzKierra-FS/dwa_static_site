@@ -1,5 +1,3 @@
-s
-
 export default function Home() {
   return (
     <div className="bg-2e294e text-white min-h-screen flex flex-col justify-center items-center">
