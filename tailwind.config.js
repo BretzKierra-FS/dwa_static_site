@@ -16,6 +16,7 @@ module.exports = {
       persianGreen: '#1B998B',
       mindaro: '#C5D86D',
       whiteTest: '#FFFFFF',
+      black: '#000000',
     },
     extend: {},
   },
