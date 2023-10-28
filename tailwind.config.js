@@ -9,6 +9,9 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    backgroundImage: {
+      'wood-pattern': "url('/postboard.png')",
+    },
     colors: {
       crimson: '#d7263d',
       giantOrange: '#F46036',
