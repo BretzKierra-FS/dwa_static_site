@@ -9,6 +9,14 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      signFont: ['Cabin Sketch', 'sans - serif'],
+    },
+    backgroundImage: {
+      'wood-pattern': "url('/postboard.png')",
+      'paper-background': "url('/paper.png')",
+      'sign-background': "url('/metal.png')",
+    },
     colors: {
       crimson: '#d7263d',
       giantOrange: '#F46036',
@@ -16,6 +24,7 @@ module.exports = {
       persianGreen: '#1B998B',
       mindaro: '#C5D86D',
       whiteTest: '#FFFFFF',
+      black: '#000000',
     },
     extend: {},
   },
