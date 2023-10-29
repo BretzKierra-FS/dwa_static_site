@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <div>
       <Header />
-      <Blog/>
+      <Blog />
     </div>
   );
 }

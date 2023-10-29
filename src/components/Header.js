@@ -6,7 +6,7 @@ const Header = () => {
       <img src="/tent.svg" className="w-full absolute" />
       <img
         src="/logo.png"
-        className="m-auto relative p-10 top-10 mr-10
+        className="m-auto relative pt-20
       "
       />
     </header>

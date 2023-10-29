@@ -11,6 +11,7 @@ module.exports = {
   theme: {
     backgroundImage: {
       'wood-pattern': "url('/postboard.png')",
+      'paper-background': "url('/paper.png')",
     },
     colors: {
       crimson: '#d7263d',
