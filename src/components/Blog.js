@@ -69,7 +69,10 @@ const Blog = () => {
                 className="w-2/3 m-auto mt-20 flex p-20  rounded-2x"
                 key={post.id}
               >
-                <div className=" bg-paper-background rounded-2xl p-5">
+                <div
+                  className="rounded-2xl p-5"
+                  style={{ backgroundImage: "url('./paper.png')" }}
+                >
                   <h2 className="text-center text-5xl p-3 m-5 mt-24 font-signFon rounded-xl text-whiteTest text opacity-70 bg-black ">
                     {post.title}
                   </h2>
