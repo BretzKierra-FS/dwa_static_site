@@ -13,9 +13,9 @@ module.exports = {
       signFont: ['Cabin Sketch', 'sans - serif'],
     },
     backgroundImage: {
-      'wood-pattern': "url('./postboard.png')",
-      'paper-background': "url('./paper.png')",
-      'sign-background': "url('./metal.png')",
+      'wood-pattern': "url('/postboard.png')",
+      'paper-background': "url('/paper.png')",
+      'sign-background': "url('/metal.png')",
     },
     colors: {
       crimson: '#d7263d',
