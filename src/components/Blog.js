@@ -76,7 +76,8 @@ const Blog = () => {
           ) : (
             blogs.map((post) => (
               <div
-                className="w-2/3 m-auto mt-20 flex p-20 bg-wood-pattern rounded-2x"
+                className="w-2/3 m-auto mt-20 flex p-20 rounded-2x"
+                style={{ backgroundImage: "url('./postboard.png')" }}
                 key={post.id}
               >
                 <div className="bg-paper-background rounded-2xl p-5">
