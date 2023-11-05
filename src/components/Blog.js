@@ -1,38 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BlogPost from './BlogPost';
 import Footer from './Footer';
-const Blog = () => {
-  const [blogPosts, setBlogPosts] = useState([
-    {
-      id: 1,
-      title: 'Asynchronous Operations',
-      description:
-        '🤹‍♂️ First, JavaScript wows the crowd with Asynchronous Operations, handling multiple tasks at once, making real-time data updates a breeze.',
-      content:
-        ' JavaScript leverages asynchronous operations to perform tasks that were traditionally reserved for the back end. This includes making HTTP requests, handling databases, and managing real-time data. Libraries like Axios and the built-in fetch API enable developers to send requests to servers and process responses without requiring a page refresh. This allows for dynamic and responsive front-end experiences.',
-    },
-    {
-      id: 2,
-      title: 'Front-End Frameworks',
-      description:
-        ' Modern front-end frameworks like Angular, React, and Vue provide extensive tools for building complex applications. They offer features like state management, data fetching, and component-based architecture, which were traditionally the domain of the back end.',
-      content:
-        'Single-page applications (SPAs) heavily rely on JavaScript for client-side routing. Frameworks like React, Angular, and Vue provide powerful routing mechanisms that let you control what content is displayed in the browser based on the URL. This capability was traditionally associated with server-side rendering, but JavaScript now enables the front end to manage it efficiently.',
-    },
-    {
-      id: 3,
-      title: 'Client-Side Routing',
-      description:
-        "🎉 Don't forget the star-studded Front-End Frameworks! - they're the icing on the cake!",
-      content:
-        'Single-page applications (SPAs) heavily rely on JavaScript for client-side routing. Frameworks like React, Angular, and Vue provide powerful routing mechanisms that let you control what content is displayed in the browser based on the URL. This capability was traditionally associated with server-side rendering, but JavaScript now enables the front end to manage it efficiently.',
-    },
-  ]);
 
+const Blog = () => {
+  // Hooks
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [selectedPost, setSelectedPost] = useState(null);
 
+  const API_BASE =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:4000'
+      : process.env.REACT_APP_BASE_URL;
+
+  let ignore = false;
+
+  useEffect(() => {
+    if (!ignore) {
+      getBlogs();
+    }
+
+    return () => {
+      ignore = true;
+      setBlogs([]);
+      setLoading(false);
+      setError(null);
+    };
+  }, []);
+
+  const getBlogs = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_BASE}/newPost`);
+      const data = await response.json();
+      setBlogs(data);
+    } catch (error) {
+      setError(error.message || 'Unexpected Error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const selectPost = (postId) => {
-    const post = blogPosts.find((post) => post.id === postId);
+    const post = blogs.find((post) => post.id === postId);
     setSelectedPost(post);
   };
 
@@ -56,31 +67,30 @@ const Blog = () => {
             <div>
               <button
                 onClick={goBackToAllPosts}
-                className=" bg-giantOrange p-5 rounded-3xl relative left-9 text-whiteTest text-2xl mt-10"
+                className="bg-giantOrange p-5 rounded-3xl relative left-9 text-whiteTest text-2xl mt-10"
               >
                 Go Back
               </button>
               <BlogPost post={selectedPost} />
             </div>
           ) : (
-            blogPosts.map((post) => (
+            blogs.map((post) => (
               <div
                 className="w-2/3 m-auto mt-20 flex p-20 bg-wood-pattern rounded-2x"
                 key={post.id}
               >
-                <div className=" bg-paper-background rounded-2xl p-5">
+                <div className="bg-paper-background rounded-2xl p-5">
                   <h2 className="text-center text-5xl p-3 m-5 mt-24 font-signFon rounded-xl text-whiteTest text opacity-70 bg-black ">
                     {post.title}
                   </h2>
-                  <p className=" font-semibold m-10">{post.description}...</p>
+                  <p className="font-semibold m-10">{post.description}...</p>
                   <div>
                     <button
                       onClick={() => selectPost(post.id)}
-                      className=" bg-giantOrange p-5 rounded-3xl relative left-9 text-whiteTest text-2xl"
+                      className="bg-giantOrange p-5 rounded-3xl relative left-9 text-whiteTest text-2xl"
                     >
                       Read More
-                    </button>{' '}
-                    {/* Read more */}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -94,5 +104,3 @@ const Blog = () => {
 };
 
 export default Blog;
-
-const styles = {};
