@@ -7,6 +7,7 @@ const BlogPost = ({ post }) => {
       style={{ backgroundImage: "url('./paper.png')" }}
     >
       <div>
+        <img src={post.image} alt="no image" />
         <h2 className="text-center text-5xl p-3 m-5 mt-10 s">{post.title}</h2>
         <p className=" text-lg font-semibold">{post.description}</p>
         <p className="text-lg font-semibold">{post.content}</p>
